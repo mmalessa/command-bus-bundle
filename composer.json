@@ -1,26 +1,30 @@
 {
-    "name": "mmalessa/commandbus-bundle",
+    "name": "mmalessa/command-bus-bundle",
     "version": "0.0.1",
     "type": "symfony-bundle",
-    "description": "Simple library to implement commandbus.",
-    "keywords": ["command bus", "commandbus bundle"],
-    "homepage": "https://github.com/mmalessa/commandbus-bundle",
-    "license": "GPL",
+    "description": "Simple library to implement command-bus.",
+    "keywords": [
+        "command bus",
+        "command-bus",
+        "command bus bundle"
+    ],
+    "homepage": "https://github.com/mmalessa/command-bus-bundle",
+    "license": "MIT",
     "authors": [
         {
-	    "name": "Marcin Malessa",
-	    "email": "marcin@malessa.pl",
-	    "homepage": "http://github.com/mmalessa"
-	}
+            "name": "Marcin Malessa",
+            "email": "marcin@malessa.pl",
+            "homepage": "http://github.com/mmalessa"
+        }
     ],
     "require": {
-	    "php": ">=7.2",
-	    "mmalessa/commandbus" : "*",
+        "php": ">=7.2",
+        "mmalessa/command-bus": "*",
         "symfony/framework-bundle": "4.3.*"
     },
     "autoload": {
-	"psr-4": {
+        "psr-4": {
             "Mmalessa\\CommandBusBundle\\": "src/"
-	}
+        }
     }
 }
