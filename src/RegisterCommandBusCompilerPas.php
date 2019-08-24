@@ -1,9 +1,6 @@
 <?php
 namespace Mmalessa\CommandBusBundle;
 
-use Mmalessa\CommandBus\Command;
-use ReflectionClass;
-use InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -12,13 +9,11 @@ class RegisterCommandBusCompilerPas implements CompilerPassInterface
 {
     private $busService;
     private $serviceTag;
-    private $subscriberInterface;
 
-    public function __construct(string $busService, string $serviceTag, string $subscriberInterface)
+    public function __construct(string $busService, string $serviceTag)
     {
         $this->busService          = $busService;
         $this->serviceTag          = $serviceTag;
-        $this->subscriberInterface = $subscriberInterface;
     }
 
     public function process(ContainerBuilder $container)

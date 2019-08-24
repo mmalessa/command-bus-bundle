@@ -12,10 +12,10 @@ class CommandBusBundle extends Bundle
         parent::build($container);
         $container->addCompilerPass(
             new RegisterCommandBusCompilerPas(
-                'mmalessa.command_bus',
-                'mmalessa.command_handler',
-                \Mmalessa\CommandBus\CommandBus::class
+                \Mmalessa\CommandBus\CommandBus::class,
+                'mmalessa.command_handler'
             )
         );
+
     }
 }
