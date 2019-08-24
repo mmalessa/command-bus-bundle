@@ -30,28 +30,7 @@ class RegisterCommandBusCompilerPas implements CompilerPassInterface
         foreach ($container->findTaggedServiceIds($this->serviceTag) as $serviceId => $serviceAttributes) {
             $serviceDefinition = $container->getDefinition($serviceId);
             $handlerClassName = $container->getParameterBag()->resolveValue($serviceDefinition->getClass());
-
-            $handlerReflectionClass = new ReflectionClass($handlerClassName);
-            if (!$handlerReflectionClass->hasMethod('handle')) {
-                throw new InvalidArgumentException(
-                    sprintf('There must be a "handle" method in the "%s" service.', $serviceId)
-                );
-            }
-
-            $commandReflectionClass = $handlerReflectionClass->getMethod('handle')->getParameters()[0]->getClass();
-            if(!$commandReflectionClass->implementsInterface(Command::class)) {
-                throw new InvalidArgumentException(
-                    sprintf('Command %s must implement %s interface.', $commandReflectionClass->getName(), Command::class)
-                );
-            }
-
-            $busServiceDefinition->addMethodCall(
-                'subscribe',
-                [
-                    new Reference($commandReflectionClass->getName()),
-                    new Reference($handlerReflectionClass->getName())
-                ]
-            );
+            $busServiceDefinition->addMethodCall('subscribe', [new Reference($handlerClassName)]);
         }
     }
 }

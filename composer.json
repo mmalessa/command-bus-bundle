@@ -1,7 +1,7 @@
 {
     "name": "mmalessa/command-bus-bundle",
-    "version": "0.0.1",
     "type": "symfony-bundle",
+    "version": "0.0.1",
     "description": "Simple library to implement command-bus.",
     "keywords": [
         "command bus",
