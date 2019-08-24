@@ -1,8 +1,7 @@
 # Command bus - Symfony bundle
 
 Requires Symfony 4.3.*  
-https://github.com/mmalessa/command-bus-bundle
-
+https://github.com/mmalessa/command-bus-bundle  
 Use it at your own risk.  
 
 # Install
