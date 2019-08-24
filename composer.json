@@ -1,7 +1,6 @@
 {
     "name": "mmalessa/command-bus-bundle",
     "type": "symfony-bundle",
-    "version": "0.0.1",
     "description": "Simple library to implement command-bus.",
     "keywords": [
         "command bus",
@@ -18,7 +17,7 @@
     ],
     "require": {
         "php": ">=7.2",
-        "mmalessa/command-bus": "*",
+        "mmalessa/command-bus": "^1.0",
         "symfony/framework-bundle": "4.3.*"
     },
     "autoload": {
