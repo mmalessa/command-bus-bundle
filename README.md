@@ -28,19 +28,42 @@ use Mmalessa\CommandBus\CommandTrait;
 class ExampleCommand implements Command
 {
     use CommandTrait;
-    // [...]
-}
-```
-```php
-class ExampleCommandHandler
-{
-    public function handle(ExampleCommand $command)
+
+    public static function create(int $id, string $name)
     {
-        // [...]
+        return new self(
+            [
+                'id' => $id,
+                'name' => $name
+            ]
+        );
+    }
+
+    public function id()
+    {
+        return $this->payload['id'];
+    }
+
+    public function name()
+    {
+        return $this->payload['name'];
     }
 }
 ```
-See - README for the mmalessa/command-bus package.
+
+```php
+class ExampleCommandHandler
+{
+    public function handle(TestCommand $command): void
+        {
+            echo "Handle TestCommand\n";
+            printf("ID: %s\n", $command->id());
+            printf("Name: %s\n", $command->name());
+            var_dump($command->payload());
+        }
+}
+```
+(See - README for the mmalessa/command-bus package.)
 
 ## Inject command bus into Symfony command/controller
 ```php
@@ -51,6 +74,6 @@ public function __construct(CommandBus $commandBus)
 
 ## Handle command
 ```php
-$command = new TestCommand();
+$command = TestCommand::create(1, 'Silifon');
 $this->commandBus->handle($command);
 ```
