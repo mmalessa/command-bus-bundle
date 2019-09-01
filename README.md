@@ -9,7 +9,7 @@ Use it at your own risk.
 composer req mmalessa/command-bus-bundle
 ```
 
-# Usage
+# Example of use
 ## Register your handler(s)
 ```yaml
 services:
@@ -21,48 +21,6 @@ The command class is automatically detected based on the type of parameter
 in the handler 'handle' method.
 
 ## Create command and handler
-```php
-use Mmalessa\CommandBus\Command;
-use Mmalessa\CommandBus\CommandTrait;
-
-class ExampleCommand implements Command
-{
-    use CommandTrait;
-
-    public static function create(int $id, string $name)
-    {
-        return new self(
-            [
-                'id' => $id,
-                'name' => $name
-            ]
-        );
-    }
-
-    public function id()
-    {
-        return $this->payload['id'];
-    }
-
-    public function name()
-    {
-        return $this->payload['name'];
-    }
-}
-```
-
-```php
-class ExampleCommandHandler
-{
-    public function handle(TestCommand $command): void
-        {
-            echo "Handle TestCommand\n";
-            printf("ID: %s\n", $command->id());
-            printf("Name: %s\n", $command->name());
-            var_dump($command->payload());
-        }
-}
-```
 (See - README for the mmalessa/command-bus package.)
 
 ## Inject command bus into Symfony command/controller
